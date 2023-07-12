@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { Pressable, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
-export default function App() {
+import Home  from './Pages/Home';
+import Conference  from './Pages/Conference';
+
+
+
+
+function Story({ navigation }) {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text style={{fontSize: 20}}>Our Story</Text>
+       <Pressable
+        onPress={() => navigation.navigate('Conference')}
+        style={{ padding: 10, marginBottom: 10, marginTop: 10 }}
+      >
+      <Text>Go to Conference</Text>
+      </Pressable>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Drawer = createDrawerNavigator();
+
+function App() {
+  return (
+    <GestureHandlerRootView style={{flex: 1}}>
+     <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={Home}  />
+        <Drawer.Screen name="Conference" component={Conference} />
+        <Drawer.Screen name="Story" component={Story} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+    </GestureHandlerRootView>
+  );
+}
+
+export default App;
