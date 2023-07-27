@@ -31,6 +31,12 @@ function Home({ navigation }) {
       setDoCalibration(true);
     }
 
+    const api = async ()=>{
+      let data = await fetch('http://localhost/server/api.php');
+      let json = await data.json();
+      console.log(json);
+    }
+
     const onMessage = (event)=>{
       var state = JSON.parse(event.data);
       console.log(state);
@@ -93,6 +99,13 @@ function Home({ navigation }) {
           style={{ padding: 10, marginBottom: 10, marginTop: 10 }}
         >
         <Text>Kalibrieren</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={api}
+          style={{ padding: 10, marginBottom: 10, marginTop: 10 }}
+        >
+        <Text>API</Text>
         </Pressable>
       </View>
     );

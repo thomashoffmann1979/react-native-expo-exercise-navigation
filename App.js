@@ -6,6 +6,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 import Home  from './Pages/Home';
 import Conference  from './Pages/Conference';
+import Question  from './Pages/Question';
 
 
 
@@ -34,6 +35,8 @@ function App() {
         <Drawer.Screen name="Home" component={Home}  />
         <Drawer.Screen name="Conference" component={Conference} />
         <Drawer.Screen name="Story" component={Story} />
+        <Drawer.Screen name="Question" component={Question} />
+        
       </Drawer.Navigator>
     </NavigationContainer>
     </GestureHandlerRootView>
